@@ -1,10 +1,16 @@
+import 'package:event_poll/states/auth_state.dart';
+import 'package:event_poll/ui/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:provider/provider.dart';
 
 import 'ui/app_scaffold.dart';
 
 void main() {
-  runApp(const App());
+  runApp(ChangeNotifierProvider<AuthState>(
+    child: const App(),
+    create: (context) => AuthState(),
+  ));
 }
 
 class App extends StatelessWidget {
@@ -21,7 +27,7 @@ class App extends StatelessWidget {
       supportedLocales: const [Locale('fr')],
       locale: const Locale('fr'),
       localizationsDelegates: GlobalMaterialLocalizations.delegates,
-      initialRoute: '/polls',
+      initialRoute: '/login',
       routes: {
         '/polls': (context) => const AppScaffold(
               title: 'Événements',
@@ -41,7 +47,11 @@ class App extends StatelessWidget {
             ),
         '/login': (context) => const AppScaffold(
               title: 'Connexion',
-              body: Placeholder(child: Center(child: Text('LOGIN'))),
+              body: LoginPage()
+            ),
+            '/logout': (context) => const AppScaffold(
+              title: 'Déconnexion',
+              body: LoginPage()
             ),
         '/signup': (context) => const AppScaffold(
               title: 'Inscription',

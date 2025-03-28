@@ -1,3 +1,14 @@
+import 'package:event_poll/states/auth_state.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
 class _LoginPageState extends State<LoginPage> {
   String username = '';
   String password = '';

@@ -1,4 +1,11 @@
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+
+import '../configs.dart';
+import '../models/user.dart';
 
 class AuthState extends ChangeNotifier {
 
@@ -41,7 +48,7 @@ class AuthState extends ChangeNotifier {
   return null;
 }
 
-void logout(String username, String password) async {
+void logout() async {
   
     _token = null;
       _currentUser = null;
